@@ -15,6 +15,7 @@ daemon
 log /var/log/3proxy/3proxy.log D
 logformat "- +_L%t.%. %N.%p %E %U %C:%c %R:%r %O %I %h %T"
 rotate 30
+proxy -n -p3128 -a
 auth iponly
 allow * 62.171.137.74,5.45.76.45,5.45.75.191
 deny * * * * * * *
