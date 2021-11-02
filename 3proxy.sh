@@ -1,8 +1,8 @@
 #!/bin/bash
-yum -y install 3proxy
+#yum -y install 3proxy
 ip=$(curl ifconfig.me)
-echo $ip
-mv /etc/3proxy.cfg /etc/3proxy_original
+#echo $ip
+mv /etc/3proxy.cfg /etc/3proxy_original_2
 touch /etc/3proxy.cfg
 cat > /etc/3proxy.cfg <<EOF
 nserver 77.88.8.8
@@ -15,15 +15,14 @@ daemon
 log /var/log/3proxy/3proxy.log D
 logformat "- +_L%t.%. %N.%p %E %U %C:%c %R:%r %O %I %h %T"
 rotate 30
-proxy -n -p3128 -a
+proxy -p3128
 auth iponly
-allow * 62.171.137.74,5.45.76.45,5.45.75.191
+allow * 62.171.137.74,5.45.76.45,5.45.75.191,85.113.60.120
 deny * * * * * * *
 allow * * * 80-88,8080-8088 HTTP
 allow * * * 443,8443 HTTPS
 EOF
-firewall-cmd --add-port=3128/tcp
-firewall-cmd --runtime-to-permanent
 systemctl enable 3proxy
 systemctl start 3proxy
 systemctl status 3proxy
+systemctl restart firewalld
