@@ -1,6 +1,6 @@
 <html>
   <head>
-  <title>CSP key install </title>
+  <title>Установка и обновление ключей CSP </title>
   </head>
   <body>
   <form action="#" method="post" enctype="multipart/form-data">
@@ -10,7 +10,14 @@
   </form>
    <form method="post">
    <p>
- <button name="button">Установить ключ</button>
+ <button name="button">Установить подпись</button>
+   </p>
+ </form>
+
+  </form>
+   <form method="post">
+   <p>
+ <button name="test">Проверить установленую подпись</button>
    </p>
  </form>
   </body>
@@ -44,3 +51,13 @@ if (isset($_POST['button']))
 exec('/key.sh');
 }
 ?>
+
+<?php
+if (isset($_POST['test']))
+{
+
+$output = shell_exec('cat /opt/sert.txt');
+echo "<pre>$output</pre>";
+}
+?>
+
