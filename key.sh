@@ -1,5 +1,7 @@
 #!/bin/bash
-mv /var/www/html/uploads/* /var/opt/cprocsp/keys/root
+cp /var/www/html/uploads/* /root/csp
+chown root:root -R /root/csp/*
+cp /root/csp/* /var/opt/cprocsp/keys/root
 sert=$(/opt/cprocsp/bin/amd64/csptest -keyset -enum_cont -verifycontext -fqcn | grep HDIMAGE)
 
 
