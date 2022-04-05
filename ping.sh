@@ -8,7 +8,7 @@ echo $IP
 
 ping -c5 -i3 vetrf.ru
 if [ $? -eq 0 ]
-then echo “ok”
+then curl -s "https://api.telegram.org/bot934556127:AAEtWQux1JzI6D2jESIv-qjs-oWmfcDju4U/sendMessage?chat_id=-488166333&text=доступен vetrf.ru с адреса $IP"
 
 
 exit 0
